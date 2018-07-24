@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!--struts默认文件配置名为strut.xml，更改成其他别名会报错-->
+    <!-- Struts2在2.5版本后添加strict-method-invocation(严格方法访问)，默认为true，不能使用动态方法调用功能，故需设为false -->
+    <!--package name根据自己的需求来定，必须是唯一的，但是必须继承于struts-default,大量的初始化工作都写在Struts-default文件中
+    （可查看struts2-core-2.5.5.jar包根目录上的struts-default.xml文件了解）;对于大型项目，namespace可以根据业务定义不同的值来处理。
+    因为同一个命名空间action的name值不能重复，所以需要多个命名空间来区别。一般访问路径为项目URL(包括端口)+命名空间的值+action的name的值
+    -->
+    <package name="user" extends="struts-default" namespace="/"  strict-method-invocation="false">
+        <!-- action中name的值为URL访问的路径值 -->
+        <!--未整合spring前，class填写的是类路径，例如下面为com.moodincode.action.LoginAction-->
+        <!--<action name="login" class="com.moodincode.action.LoginAction" method="login">-->
+
+        <!--整合spring后，此处的应该改为spring中@Controller注解的value值，当没有指定value值时，默认为首字母小写开头的类名，
+        例如LoginAction类的应该写成loginAction,若指定名称value值，class内容填写的就是该value的值-->
+        <!--
+        method的值为action类中的方法名，没有指定method的值时，默认调用execute方法，当method的值为通配符时，action的name中需设置带*号作为通配值，比如
+        此处传的值为login_login，则调用login方法，传值login_execute则调用execute方法
+        -->
+        <action name="login_*" class="loginAction" method="{1}">
+            <!--result的name即方法返回的值，result中的值为jsp路径-->
+            <result name="login">/WEB-INF/success.jsp</result>
+            <result name="success">index.jsp</result>
+        </action>
+        <action name="index!*" class="myIndex" method="{1}">
+
+            <result name="index">/WEB-INF/index/index.jsp</result>
+            <result name="index2">/WEB-INF/index/index2.jsp</result>
+            <result name="list">/WEB-INF/index/list.jsp</result>
+        </action>
+    </package>
+
+    <!--
+    可以拆分成多个xml 通过include引入使用
+    <include file="my-strut.xml"/>
+    -->
+    <constant name="struts.objectFactory" value="spring" />
+    <!-- 引入资源文件 struts国际化，用于自定义多语言的资源文件的引用 -->
+    <constant name="struts.custom.i18n.resources" value="messageResource"></constant>
+</struts>
