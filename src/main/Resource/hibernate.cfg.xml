@@ -22,25 +22,25 @@
         <property name="format_sql">true</property>
   <!--      <property name="hibernate.connection.autocommit">true</property>-->
 
-        <!--&lt;!&ndash; 连接池的配置 &ndash;&gt;
+        <!-- 连接池的配置 -->
         <property name="hibernate.connection.provider_class">
-            org.hibernate.c3p0.internal.StrategyRegistrationProviderImpl
+            org.hibernate.c3p0.internal.C3P0ConnectionProvider
         </property>
 
-        &lt;!&ndash; C3P0随机准备好的最少的JDBC连接数量 &ndash;&gt;
+        <!-- C3P0随机准备好的最少的JDBC连接数量 -->
         <property name="hibernate.c3p0.min_size">5</property>
 
-        &lt;!&ndash; 连接池的最大JDBC连接数量 &ndash;&gt;
+        <!-- 连接池的最大JDBC连接数量 -->
         <property name="hibernate.c3p0.max_size">20</property>
 
-        &lt;!&ndash; 配置超时周期，在他之后，休闲连接将从连接池中移除 &ndash;&gt;
+        <!-- 配置超时周期，在他之后，休闲连接将从连接池中移除 -->
         <property name="hibernate.c3p0.timeout">300</property>
 
-        &lt;!&ndash; 最多高速缓存100个预编译语句，该属性是使Hibernate获得良好性能的要素 &ndash;&gt;
+        <!-- 最多高速缓存100个预编译语句，该属性是使Hibernate获得良好性能的要素 -->
         <property name="hibernate.c3p0.max_statements">100</property>
 
-        &lt;!&ndash; 连接池被自动验证前，以秒为单位的闲置时间 &ndash;&gt;
-        <property name="hibernate.c3p0.idle_test_period">3000</property>-->
+        <!-- 连接池被自动验证前，以秒为单位的闲置时间 -->
+        <property name="hibernate.c3p0.idle_test_period">3000</property>
 
         <!-- 注册ORM实体类映射文件 -->
         <mapping resource="com/moodincode/entity/User.hbm.xml"/>
