@@ -52,6 +52,19 @@
       <artifactId>hibernate-c3p0</artifactId>
       <version>5.3.3.Final</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-ehcache -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-ehcache</artifactId>
+      <version>5.3.3.Final</version>
+    </dependency>
+
+    <!--hibernate 使用ehcache作为二级缓存所需jar-->
+    <dependency>
+      <groupId>net.sf.ehcache</groupId>
+      <artifactId>ehcache</artifactId>
+      <version>2.10.2</version>
+    </dependency>
     <!-- https://mvnrepository.com/artifact/jstl/jstl -->
     <!-- <dependency>
          <groupId>javax.servlet</groupId>
@@ -69,11 +82,12 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
-    <dependency>
+      <!---->
+    <!--<dependency>
       <groupId>taglibs</groupId>
       <artifactId>standard</artifactId>
       <version>1.1.2</version>
-    </dependency>
+    </dependency>-->
 
     <dependency>
       <groupId>commons-dbcp</groupId>
@@ -82,23 +96,17 @@
     </dependency>
 
     <!-- 添加Log4J依赖 -->
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>1.2.16</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>1.6.1</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-nop</artifactId>
-      <version>1.6.4</version>
-    </dependency>
+      <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-core</artifactId>
+          <version>2.10.0</version>
+      </dependency>
+      <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+      <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
+          <version>2.10.0</version>
+      </dependency>
 
     <!-- 添加javassist -->
     <dependency>

@@ -42,8 +42,25 @@
         <!-- 连接池被自动验证前，以秒为单位的闲置时间 -->
         <property name="hibernate.c3p0.idle_test_period">3000</property>
 
+        <!--使用spring整合后，此处需在spring配置文件中写入，此处写入还是报错（具体原因未知）-->
+        <!--hibernate二级缓存配置-->
+        <!--开启二级缓存-->
+        <!--net.sf.ehcache.jar-->
+       <!-- <property name="hibernate.cache.use_second_level_cache">true</property>-->
+        <!--hibernate 4.0之前版本采用此配置ehcache缓存-->
+        <!--<property name="hibernate.cache.provider_class">
+             org.hibernate.cache.EhCacheProvider
+            </property>-->
+        <!--hibernate 4.0之后版本采用此配置ehcache缓存-->
+       <!-- <property name="hibernate.cache.provider_class">
+            org.hibernate.cache.ehcache.internal.SingletonEhcacheRegionFactory</property>-->
+
+        <!-- 启动"查询缓存"如果想缓存使用findall()、list()、Iterator(se_qeateCriteria()、createQuery()等方法获得的数据结果集,必须配置此项-->
+     <!--   <property name="cache.use_query_cache">true</property>-->
         <!-- 注册ORM实体类映射文件 -->
         <mapping resource="com/moodincode/entity/User.hbm.xml"/>
+        <!--针对单个实体类设置缓存读写-->
+        <class-cache class="com.moodincode.entity.User" usage="read-write"/>
 
     </session-factory>
 </hibernate-configuration>

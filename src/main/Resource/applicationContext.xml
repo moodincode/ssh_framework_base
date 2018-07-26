@@ -19,11 +19,26 @@
     <!-- 配置Hibernate的SessionFactory,有hibernate配置文件 -->
     <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="configLocation" value="classpath:hibernate.cfg.xml"/>
+        <property name="hibernateProperties">
+            <props>
+                <!-- 是否开启二级缓存 -->
+                <prop key=" hibernate.cache.use_second_level_cache">true</prop>
+                <!-- 是否启用查询缓存 -->
+                <prop key=" hibernate.cache.use_query_cache">true</prop>
+                <!-- 配置二级缓存提供商 -->
+                <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.internal.SingletonEhcacheRegionFactory</prop>
+                <!-- 配置 ehcache.xml的路径-->
+                <prop key="hibernate.net.sf.ehcache.configurationResourceName">classpath:ehcache.xml</prop>
+            </props>
+        </property>
+
+
     </bean>
     <!-- 定义事务管理器 -->
     <bean id="txManager"
           class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
+
     </bean>
 
     <!-- xml配置事务 -->

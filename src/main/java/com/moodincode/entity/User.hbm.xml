@@ -4,6 +4,8 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="com.moodincode.entity">
     <class name="User" table="t_user">
+        <!--hibernate使用ehcache二级缓存是需要标志需要使用缓存-->
+        <cache usage="read-write"/>
         <id name="id" column="id" type="java.lang.Integer">
             <generator class="increment"></generator>
         </id>
